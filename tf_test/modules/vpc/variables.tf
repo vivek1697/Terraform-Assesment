@@ -1,4 +1,5 @@
-variable "vpc_ciddrr_block" {
+# Fixed the variable name
+variable "vpc_cidr_block" {
   description = "The CIDR block for the VPC"
   type        = string
 }
@@ -8,8 +9,10 @@ variable "public_subnet_cidr_blocks" {
   type        = list
 }
 
+# Added Variable type
 variable "private_subnet_cidr_blocks" {
   description = "The list of CIDR blocks to use in building the private subnets. List size needs to match availability zone count"
+  type        = list
 }
 
 variable "availability_zones" {
