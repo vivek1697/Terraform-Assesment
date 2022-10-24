@@ -7,6 +7,4 @@ module "sandbox_vpc" {
   public_subnet_cidr_blocks = var.public_subnet_cidr_blocks
 }
 
-output "vpc_id" {
-  value = module.sandbox_vpc.id
-}
+
