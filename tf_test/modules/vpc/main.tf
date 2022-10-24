@@ -51,6 +51,7 @@ resource "aws_internet_gateway" "internet_gw" {
 # route tables
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.application_vpc.id
+  count = length(aws_subnet.public_subnets)
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -107,6 +108,6 @@ resource "aws_route_table_association" "private_rta" {
 # public subnet route table associations
 resource "aws_route_table_association" "public_rta" {
   subnet_id      = element(aws_subnet.public_subnets.*.id, count.index)
-  route_table_id = aws_route_table.public_rt.id
+  route_table_id = aws_route_table.public_rt[count.index].id
   count          = length(aws_subnet.public_subnets)
 }

@@ -24,3 +24,7 @@ variable "environment" {
   description = "The environment type being created"
   type        = string
 }
+
+variable "aws_region" {
+  description = "The region to launch the bastion host"
+}
