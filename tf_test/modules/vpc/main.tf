@@ -54,7 +54,7 @@ resource "aws_route_table" "public_rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = 
+    gateway_id = element(aws_internet_gateway.internet_gw.*.id, count.index)
   }
 
   tags = {
